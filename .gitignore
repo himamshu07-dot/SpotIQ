@@ -1,6 +1,7 @@
 node_modules/
 build/
 dist/
+.aistudio/
 coverage/
 .DS_Store
 *.log

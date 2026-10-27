@@ -16,7 +16,6 @@ import {
   INITIAL_BOOKINGS,
   INITIAL_VEHICLES,
 } from './data/mockData.ts';
-import { ScreenSwitcher } from './components/ScreenSwitcher.tsx';
 import { MobileBottomNav } from './components/MobileBottomNav.tsx';
 import { MobileAuthShowcase } from './screens/MobileAuthShowcase.tsx';
 import { AuthScreen, UserRole } from './screens/AuthScreen.tsx';
@@ -157,15 +156,6 @@ export default function App() {
 
   return (
     <div className="flex flex-col min-h-[100dvh] bg-[#080B10] text-[#e1e2ea] antialiased selection:bg-[#00e5ff] selection:text-[#001f24] touch-scroll">
-      {/* Prototype & Testing Switcher (Adaptive: full top bar on Desktop, floating pill on Mobile) */}
-      <ScreenSwitcher
-        currentScreen={currentScreen}
-        onNavigate={setCurrentScreen}
-        onSimulateSensorChange={handleSimulateSensorChange}
-        availableCount={availableCount}
-        totalCount={levelSlots.length}
-      />
-
       {/* Real-time Sensor Feedback Toast */}
       {liveToast && (
         <div
