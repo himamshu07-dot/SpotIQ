@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<meta content="mobile_stack" name="shell-type"/>
+<title>SpotIQ Driver Companion - Active Session</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary": "#ffe7e6",
+            "inverse-surface": "#e1e2ea",
+            "surface-container": "#1d2025",
+            "inverse-on-surface": "#2d3036",
+            "on-background": "#e1e2ea",
+            "on-surface-variant": "#bac9cc",
+            "secondary": "#aff833",
+            "secondary-container": "#95da03",
+            "error-container": "#93000a",
+            "on-primary-fixed-variant": "#004f58",
+            "tertiary-container": "#ffc1c0",
+            "on-error": "#690005",
+            "on-primary": "#00363d",
+            "surface-container-lowest": "#0b0e13",
+            "inverse-primary": "#006875",
+            "surface-container-high": "#272a30",
+            "surface-tint": "#00daf3",
+            "surface-dim": "#101319",
+            "primary-fixed": "#9cf0ff",
+            "primary-fixed-dim": "#00daf3",
+            "primary-container": "#00e5ff",
+            "on-tertiary-container": "#ae1b30",
+            "surface-container-low": "#191c21",
+            "on-primary-fixed": "#001f24",
+            "tertiary-fixed-dim": "#ffb3b3",
+            "outline-variant": "#3b494c",
+            "surface": "#101319",
+            "on-primary-container": "#00626e",
+            "error": "#ffb4ab",
+            "on-tertiary": "#680014",
+            "on-secondary-container": "#3c5b00",
+            "secondary-fixed": "#aff833",
+            "on-secondary-fixed": "#121f00",
+            "on-surface": "#e1e2ea",
+            "surface-bright": "#36393f",
+            "secondary-fixed-dim": "#95da03",
+            "tertiary-fixed": "#ffdad9",
+            "on-secondary": "#223600",
+            "on-error-container": "#ffdad6",
+            "surface-variant": "#32353b",
+            "on-tertiary-fixed-variant": "#920020",
+            "on-tertiary-fixed": "#410009",
+            "on-secondary-fixed-variant": "#334f00",
+            "primary": "#c3f5ff",
+            "background": "#101319",
+            "surface-container-highest": "#32353b",
+            "outline": "#849396"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "1.5rem",
+            "space-xs": "0.25rem",
+            "margin": "1rem",
+            "space-md": "0.75rem",
+            "gutter": "1rem",
+            "space-lg": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "label-caps": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "headline-md": ["20px", { "lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+            "label-lg": ["14px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "display-lg": ["32px", { "lineHeight": "38px", "letterSpacing": "-0.03em", "fontWeight": "800" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "headline-lg": ["24px", { "lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-caps": ["10px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body {
+        width: 100%;
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #101319;
+        color: #e1e2ea;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+      .pb-safe {
+        padding-bottom: env(safe-area-inset-bottom, 20px);
+      }
+      .pt-safe {
+        padding-top: env(safe-area-inset-top, 0px);
+      }
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    .glow-cyan {
+      box-shadow: 0 0 20px -2px rgba(0, 229, 255, 0.35);
+    }
+    .glow-lime {
+      box-shadow: 0 0 18px -2px rgba(175, 248, 51, 0.4);
+    }
+    details summary::-webkit-details-marker {
+      display: none;
+    }
+  </style>
+</head>
+<body class="bg-surface font-body-md text-body-md flex flex-col min-h-screen antialiased selection:bg-primary-container selection:text-on-primary-fixed pb-24">
+<!-- Top App Bar Header -->
+<header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/90 backdrop-blur-xl border-b border-outline-variant/30 shadow-[0_4px_20px_rgba(0,0,0,0.6)]">
+<div class="h-16 px-margin flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Go Back" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-low hover:bg-surface-container text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+</button>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center text-on-primary-fixed shadow-md">
+<span class="material-symbols-outlined text-[20px]">electric_bolt</span>
+</div>
+<div>
+<h1 class="font-headline-sm text-headline-sm text-on-surface leading-tight tracking-tight flex items-center gap-1.5">
+              SpotIQ Companion
+              <span class="w-2 h-2 rounded-full bg-secondary animate-pulse inline-block"></span>
+</h1>
+<p class="font-label-caps text-label-caps uppercase text-on-surface-variant tracking-wider">Live Active Session</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Emergency Assistance" class="w-10 h-10 rounded-full flex items-center justify-center bg-surface-container-high hover:bg-surface-container-highest text-primary-container border border-outline-variant/40">
+<span class="material-symbols-outlined text-[19px]">sos</span>
+</button>
+<button aria-label="User Profile" class="w-10 h-10 p-0.5 rounded-full flex items-center justify-center relative">
+<img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-primary-container/80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGRvsXIOJDp9oMBinPRaixXzHoRoqvLlDWpVZaGVVMADqRr-5vz_r82-reMEib9yUk2-4rT1nm6hbCRc1wb53Rz0hFcOf7yE4RCEPC_rxo9cHpK1YFjqH0P67Uu6BMD5SMo2vPADXeL7Kl7h0jcdlswANDcMh0axJAwekG6K47JBGz-Ghj93w4E-EC_elrw7Jh3bYvhR6EJpl3zXQuNFIqvh6LZlQx34b8kQWDwUjFU1dh0yGF4Ydf5w"/>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Scrollable Companion Feed -->
+<main class="flex-1 flex flex-col relative w-full pt-20 bg-surface px-margin gap-space-md">
+<!-- Active Telemetry Quick Status Strip -->
+<section class="bg-gradient-to-r from-surface-container-high via-surface-container to-surface-container-high p-space-md rounded-2xl border border-primary-container/20 shadow-lg relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-28 h-28 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="relative flex h-2.5 w-2.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-secondary"></span>
+</span>
+<span class="font-label-caps text-label-caps text-secondary uppercase tracking-widest font-bold">En Route • Live Guidance</span>
+</div>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-surface-container-lowest/80 border border-secondary/30 text-secondary font-label-md text-label-md">
+<span class="material-symbols-outlined text-[15px]">sensors</span>
+<span>ANPR Ready</span>
+</div>
+</div>
+<div class="mt-space-sm flex items-end justify-between">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-extrabold tracking-tight">Palace South Gate</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[15px] text-primary-container">location_on</span>
+            Amba Vilas Main Approach • Ramp Level B2
+          </p>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Spots Open</span>
+<p class="font-headline-md text-headline-md text-secondary font-extrabold">38 <span class="text-xs font-normal text-on-surface-variant">/ 240</span></p>
+</div>
+</div>
+<!-- Compact Metrix Bar -->
+<div class="grid grid-cols-3 gap-2 mt- space-sm pt-space-sm border-t border-outline-variant/30">
+<div class="bg-surface-container-lowest/60 rounded-xl p-2.5 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">ETA</span>
+<span class="font-title-md text-title-md text-primary font-bold">6 Mins</span>
+</div>
+<div class="bg-surface-container-lowest/60 rounded-xl p-2.5 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Distance</span>
+<span class="font-title-md text-title-md text-on-surface font-bold">1.4 km</span>
+</div>
+<div class="bg-surface-container-lowest/60 rounded-xl p-2.5 flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">GPS Signal</span>
+<span class="font-title-md text-title-md text-secondary flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[16px]">satellite_alt</span> Locked
+          </span>
+</div>
+</div>
+</section>
+<!-- DRAWER 1: Destination & Live Grid Radar (Accordion / Expandable Drawer) -->
+<details class="group bg-surface-container-low rounded-2xl border border-outline-variant/30 overflow-hidden shadow-lg transition-all" open="">
+<summary class="flex items-center justify-between p-space-md cursor-pointer list-none select-none bg-surface-container/70 hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-container/15 text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">radar</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface font-bold">1. Live Grid Radar &amp; Ingress</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] bg-secondary/15 text-secondary font-bold">38 Spots</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Radar map, lane assist &amp; turns</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-space-md pt-2 flex flex-col gap-space-sm">
+<!-- Live mini interactive map preview -->
+<div class="relative overflow-hidden rounded-xl bg-surface-container-lowest h-48 border border-outline-variant/40">
+<div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1O_DeAFm94XP3no__hV7o99eD52BlTEkMwCwX-bVA3ip-PjEHry1M6YdLq4q0KqIrFlGu6jvrQ_LUEcvHThTJGg6Bg5pHvJMvCgHOrOwScsyuqDex8xGjwWUCcKgOhj6qeikqyqTPSS66CLbSChiCrRVCtzur8Sr4r0faGIIQ5RqLDTROno1fieQFxaydclALXnGpQdgn6xJ3hMlo9Tz9gyPZhvkxJPU6CpDWFjCYPJyPht3VB0lA_Q')">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/30 to-black/50"></div>
+</div>
+<!-- Route Ingress HUD Overlay -->
+<div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between pointer-events-none">
+<span class="px-3 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md font-label-md text-label-md text-primary flex items-center gap-1.5 shadow-md border border-primary-container/30">
+<span class="material-symbols-outlined text-[16px] text-primary-container">turn_right</span>
+              In 350m: Turn Right onto Gate 3
+            </span>
+<span class="px-2 py-0.5 rounded bg-surface-container-lowest/80 text-[10px] font-bold text-secondary uppercase tracking-wider border border-secondary/40">
+              LIVE RADAR
+            </span>
+</div>
+<!-- Bottom Ingress Tag -->
+<div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between bg-surface-container-lowest/85 backdrop-blur-md px-3 py-2 rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-2 text-on-surface text-xs font-semibold">
+<span class="material-symbols-outlined text-primary-container text-[18px]">alt_route</span>
+<span>Fast Lane B Active • No Toll Delay</span>
+</div>
+<button class="px-2.5 py-1 rounded-full bg-primary-container/20 text-primary font-label-caps text-label-caps hover:bg-primary-container hover:text-on-primary-fixed transition-colors">
+              VIEW 360°
+            </button>
+</div>
+</div>
+<button class="w-full h-12 rounded-xl bg-primary-container text-on-primary-fixed font-headline-sm text-headline-sm flex items-center justify-center gap-space-sm shadow-md transition-transform active:scale-[0.98] glow-cyan" id="startGpsBtn">
+<span class="material-symbols-outlined text-[20px]">turn_slight_right</span>
+<span>Start Turn-by-Turn GPS Directions</span>
+<span class="material-symbols-outlined text-[18px]">north_east</span>
+</button>
+</div>
+</details>
+<!-- DRAWER 2: Reserved Slot Telemetry & 3D Bay Position (Expanded by default) -->
+<details class="group bg-surface-container-low rounded-2xl border border-secondary/30 overflow-hidden shadow-lg transition-all" open="">
+<summary class="flex items-center justify-between p-space-md cursor-pointer list-none select-none bg-surface-container/70 hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-secondary/15 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">view_in_ar</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface font-bold">2. Bay Telemetry &amp; 3D Position</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] bg-secondary-container text-on-secondary-container font-bold">SLOT B04</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Level B2, Pillar 12, EV Ultra-Fast Ready</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-space-md pt-2 flex flex-col gap-space-md">
+<!-- Interactive 3D Bay Wireframe Card -->
+<div class="relative bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant/40 overflow-hidden">
+<div class="flex items-center justify-between mb-space-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">directions_car</span>
+<span class="font-label-lg text-label-lg text-on-surface font-bold">Floor Level B2 • Zone Blue</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-xs font-semibold text-primary">Distance to Lift: 15m</span>
+</div>
+<!-- Bay Visual Grid Layout Simulation -->
+<div class="grid grid-cols-4 gap-2 my-2 py-3 px-2 bg-surface-container-high/40 rounded-lg border border-outline-variant/30">
+<div class="h-16 rounded border border-dashed border-outline/40 flex flex-col items-center justify-center text-on-surface-variant/50 text-[11px]">
+<span>B02</span>
+<span class="text-[9px] uppercase">OCCUPIED</span>
+</div>
+<div class="h-16 rounded border border-dashed border-outline/40 flex flex-col items-center justify-center text-on-surface-variant/50 text-[11px]">
+<span>B03</span>
+<span class="text-[9px] uppercase">OCCUPIED</span>
+</div>
+<!-- Target Slot Highlight -->
+<div class="h-16 rounded-lg bg-secondary/15 border-2 border-secondary flex flex-col items-center justify-center text-secondary font-bold relative glow-lime">
+<span class="text-xs">B04</span>
+<span class="text-[9px] tracking-tight bg-secondary text-on-secondary px-1.5 py-0.5 rounded-full mt-0.5 font-bold">YOUR BAY</span>
+</div>
+<div class="h-16 rounded border border-dashed border-outline/40 flex flex-col items-center justify-center text-on-surface-variant/50 text-[11px]">
+<span>B05</span>
+<span class="text-[9px] uppercase">OPEN</span>
+</div>
+</div>
+<!-- Telemetry Specs Badges -->
+<div class="grid grid-cols-3 gap-2 text-center mt-3">
+<div class="p-2 rounded-lg bg-surface-container flex flex-col items-center">
+<span class="material-symbols-outlined text-primary-container text-[18px]">ev_station</span>
+<span class="text-[11px] font-bold text-on-surface mt-1">60kW CCS2 EV</span>
+<span class="text-[10px] text-on-surface-variant">Dispenser Ready</span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container flex flex-col items-center">
+<span class="material-symbols-outlined text-secondary text-[18px]">elevator</span>
+<span class="text-[11px] font-bold text-on-surface mt-1">15m to Lift #2</span>
+<span class="text-[10px] text-on-surface-variant">Step-free Path</span>
+</div>
+<div class="p-2 rounded-lg bg-surface-container flex flex-col items-center">
+<span class="material-symbols-outlined text-primary text-[18px]">videocam</span>
+<span class="text-[11px] font-bold text-on-surface mt-1">Bay Cam #12</span>
+<span class="text-[10px] text-on-surface-variant">24/7 Monitored</span>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between px-2 text-xs text-on-surface-variant">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary">check_circle</span>
+            Automatic bay lock unlocks on arrival
+          </span>
+<button class="text-primary-container font-semibold hover:underline">Change Bay</button>
+</div>
+</div>
+</details>
+<!-- DRAWER 3: Active Gate Access Pass (Live ANPR & High-Contrast QR) -->
+<details class="group bg-surface-container-low rounded-2xl border border-primary-container/30 overflow-hidden shadow-lg transition-all" open="">
+<summary class="flex items-center justify-between p-space-md cursor-pointer list-none select-none bg-surface-container/70 hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-primary-container/20 text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">qr_code_2</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface font-bold">3. Gate Access Fast-Pass</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] bg-primary-container text-on-primary-fixed font-bold uppercase">Auto Barrier</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">SPQ-MY-89241 • KA-09-EA-2091</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-space-md pt-2 flex flex-col items-center">
+<!-- Notched Ticket Container -->
+<div class="w-full bg-surface-container-high rounded-xl overflow-hidden shadow-xl border border-outline-variant/30 relative">
+<!-- Ticket Top -->
+<div class="p-space-md bg-surface-container flex items-center justify-between border-b border-outline-variant/20">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">verified_user</span>
+<div>
+<span class="text-xs uppercase tracking-wider text-on-surface-variant block font-bold">Access Token</span>
+<span class="text-sm font-extrabold text-primary tracking-wide">SPQ-MY-89241</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-[10px] uppercase text-on-surface-variant">Sync Mode</span>
+<span class="text-xs font-bold text-secondary block">ANPR + Optical</span>
+</div>
+</div>
+<!-- QR Core Display -->
+<div class="p-6 flex flex-col items-center justify-center bg-surface-container-lowest">
+<div class="relative p-4 bg-surface-container-lowest rounded-2xl shadow-inner border border-primary-container/30 flex items-center justify-center">
+<!-- Cyber brackets corners -->
+<span class="absolute top-2 left-2 w-3.5 h-3.5 rounded-tl border-t-2 border-l-2 border-primary-container"></span>
+<span class="absolute top-2 right-2 w-3.5 h-3.5 rounded-tr border-t-2 border-r-2 border-primary-container"></span>
+<span class="absolute bottom-2 left-2 w-3.5 h-3.5 rounded-bl border-b-2 border-l-2 border-primary-container"></span>
+<span class="absolute bottom-2 right-2 w-3.5 h-3.5 rounded-br border-b-2 border-r-2 border-primary-container"></span>
+<!-- SVG High Contrast QR Code Mock -->
+<div class="relative w-40 h-40 bg-surface-container-lowest flex items-center justify-center p-1">
+<svg class="w-full h-full text-on-surface" fill="currentColor" viewbox="0 0 100 100">
+<path d="M5 5h30v30H5V5zm6 6v18h18V11H11z"></path>
+<path d="M14 14h12v12H14z"></path>
+<path d="M65 5h30v30H65V5zm6 6v18h18V11H71z"></path>
+<path d="M74 14h12v12H74z"></path>
+<path d="M5 65h30v30H5V65zm6 6v18h18V71H11z"></path>
+<path d="M14 74h12v12H14z"></path>
+<path d="M42 6h8v8h-8zm12 0h6v6h-6zm-12 12h6v6h-6zm10 4h8v4h-8zm-6 8h8v6h-8zm24-12h8v6h-8zm6 10h8v8h-8zm-16 12h6v8h-6zm-8 4h8v6h-8zm-18 6h6v8h-6zm10 0h8v4h-8zm24 0h6v6h-6zm12 0h8v8h-8zm-30 8h6v8h-6zm12 4h8v6h-8zm14 0h8v8h-8zm-44 10h8v8h-8zm20 0h6v6h-6zm12 6h8v8h-8zm14-4h8v6h-8z"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<span class="px-2 py-0.5 rounded bg-primary-container text-on-primary-fixed text-[10px] font-extrabold shadow">SPOT-IQ</span>
+</div>
+</div>
+</div>
+<!-- Plate matching badge -->
+<div class="mt-4 px-3 py-1.5 rounded-full bg-surface-container-high border border-outline-variant/40 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">camera_alt</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Boom Auto-Lift for: <strong class="text-on-surface">KA-09-EA-2091</strong></span>
+</div>
+</div>
+<!-- Perforated Ticket Notches -->
+<div class="relative w-full flex items-center px-4 bg-surface-container-lowest">
+<div class="w-4 h-6 rounded-r-full bg-surface-container-low absolute -left-2 border-y border-r border-outline-variant/30"></div>
+<div class="w-full border-t border-dashed border-outline-variant/50"></div>
+<div class="w-4 h-6 rounded-l-full bg-surface-container-low absolute -right-2 border-y border-l border-outline-variant/30"></div>
+</div>
+<!-- Ticket Footer Note -->
+<div class="p-3 bg-surface-container flex items-center gap-2 text-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-primary-container text-[18px]">contactless</span>
+<span>Approach within 2.5m for seamless hands-free boom gate lift</span>
+</div>
+</div>
+<div class="mt-3 w-full flex items-center justify-between text-xs text-on-surface-variant px-1">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">offline_pin</span>
+            Offline ticket stored locally
+          </span>
+<button class="text-primary-container font-semibold hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">share</span> Share Pass
+          </button>
+</div>
+</div>
+</details>
+<!-- DRAWER 4: Trip & Billing Timeline -->
+<details class="group bg-surface-container-low rounded-2xl border border-outline-variant/30 overflow-hidden shadow-lg transition-all" open="">
+<summary class="flex items-center justify-between p-space-md cursor-pointer list-none select-none bg-surface-container/70 hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-secondary/15 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">payments</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface font-bold">4. Trip &amp; Billing Timeline</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] bg-surface-container-highest text-secondary font-bold">₹63 Settled</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">01h 14m remaining • UPI Autopay Active</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-space-md pt-2 flex flex-col gap-space-md">
+<!-- Progress Window Meter -->
+<div class="p-3.5 bg-surface-container rounded-xl border border-outline-variant/30">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary text-[18px]">nest_clock_farsight_analog</span>
+<span class="text-xs font-bold text-on-surface">Time Elapsed: 46 mins</span>
+</div>
+<span class="text-xs font-extrabold text-secondary">01h 14m Remaining</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary-container to-secondary rounded-full" style="width: 38%;"></div>
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant mt-2">
+<span>Started 02:30 PM</span>
+<span>Grace Exit Buffer: +15 mins</span>
+<span>Valid Until 04:30 PM</span>
+</div>
+</div>
+<!-- Breakdown List -->
+<div class="space-y-2 text-xs">
+<div class="flex items-center justify-between text-on-surface-variant">
+<span>Base 2-Hour Slot Rate</span>
+<span class="text-on-surface font-semibold">₹50.00</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span>Smart Bay Reservation &amp; ANPR Lock</span>
+<span class="text-on-surface font-semibold">₹10.00</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant">
+<span>GST &amp; Mysuru City Municipal Cess (18%)</span>
+<span class="text-on-surface font-semibold">₹3.00</span>
+</div>
+<div class="pt-2 border-t border-outline-variant/30 flex items-center justify-between text-sm font-bold">
+<span class="text-on-surface">Total Prepaid (UPI / Cred)</span>
+<span class="text-secondary">₹63.00 Paid</span>
+</div>
+</div>
+<!-- 1-Tap Action Buttons -->
+<div class="grid grid-cols-2 gap-space-sm pt-1">
+<button class="h-11 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-primary-container/40 text-primary font-label-md text-label-md flex items-center justify-center gap-1.5 transition-transform active:scale-[0.98]" id="extendStayBtn">
+<span class="material-symbols-outlined text-[18px]">more_time</span>
+<span>Extend (+1 Hr ₹25)</span>
+</button>
+<button class="h-11 rounded-xl bg-surface-container-high hover:bg-surface-container-highest border border-outline-variant/50 text-on-surface font-label-md text-label-md flex items-center justify-center gap-1.5 transition-transform active:scale-[0.98]">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+<span>Tax Invoice</span>
+</button>
+</div>
+</div>
+</details>
+<!-- DRAWER 5: Upcoming & Past Stays Quick Drawer -->
+<details class="group bg-surface-container-low rounded-2xl border border-outline-variant/30 overflow-hidden shadow-lg transition-all">
+<summary class="flex items-center justify-between p-space-md cursor-pointer list-none select-none bg-surface-container/70 hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-surface-container-highest text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">history_toggle_off</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-title-md text-title-md text-on-surface font-bold">5. Stays &amp; Prior Bookings</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] bg-surface-container-high text-on-surface-variant font-bold">1 Upcoming</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Devaraja Market, Forum Mall &amp; Chamundi</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-space-md pt-2 flex flex-col gap-space-sm">
+<!-- Upcoming Booking Item -->
+<div class="p-3 bg-surface-container rounded-xl border border-primary-container/30 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-container/10 text-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">event</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface">Devaraja Market North Parking</p>
+<p class="text-[11px] text-on-surface-variant">Tomorrow • 10:00 AM - 12:30 PM</p>
+</div>
+</div>
+<span class="px-2 py-1 rounded bg-surface-container-high text-[11px] text-primary font-semibold">Confirmed</span>
+</div>
+<!-- Past Booking Item -->
+<div class="p-3 bg-surface-container rounded-xl border border-outline-variant/20 flex items-center justify-between opacity-80">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-highest text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+<div>
+<p class="text-xs font-bold text-on-surface">Nexus Centre City Mall</p>
+<p class="text-[11px] text-on-surface-variant">Yesterday • Slot A12 • Completed</p>
+</div>
+</div>
+<span class="text-xs font-bold text-on-surface-variant">₹80.00</span>
+</div>
+</div>
+</details>
+<!-- Interactive Delight Toast Container -->
+<div class="hidden p-3 rounded-xl bg-surface-container-highest border border-secondary text-on-surface text-xs items-center gap-2 shadow-2xl transition-all duration-300" id="companionToast">
+<span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+<span id="toastMsgText">Parking session extended by 60 mins! Updated to 05:30 PM.</span>
+</div>
+</main>
+<!-- Sticky Floating Action Quick Dock -->
+<aside aria-label="Quick Actions" class="fixed bottom-20 left-4 right-4 z-40 pointer-events-none">
+<div class="flex items-center justify-between gap-3 pointer-events-auto">
+<!-- Quick GPS Re-center Floating Action Button -->
+<button class="flex-1 h-12 px-4 rounded-full bg-primary-container text-on-primary-fixed font-headline-sm text-xs flex items-center justify-center gap-2 shadow-2xl active:scale-95 transition-transform glow-cyan" onclick="openGpsModal()">
+<span class="material-symbols-outlined text-[20px]">near_me</span>
+<span class="tracking-wide">Navigation HUD</span>
+</button>
+<!-- Instant QR Trigger Floating Action Button -->
+<button class="h-12 px-4 rounded-full bg-secondary text-on-secondary-fixed font-headline-sm text-xs flex items-center justify-center gap-2 shadow-2xl active:scale-95 transition-transform glow-lime" onclick="window.scrollTo({top: 500, behavior: 'smooth'})">
+<span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+<span class="tracking-wide">Boom Pass</span>
+</button>
+</div>
+</aside>
+<!-- Mobile Stack Unified Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/95 backdrop-blur-xl border-t border-outline-variant/30">
+<div class="h-16 px-space-md grid grid-cols-4 items-center">
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">explore</span>
+<span class="font-label-caps text-[10px] tracking-tight">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-primary-container relative font-bold" href="#">
+<span class="material-symbols-outlined text-[22px]">drive_eta</span>
+<span class="font-label-caps text-[10px] tracking-tight">Active</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary absolute top-0.5 right-6"></span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">receipt_long</span>
+<span class="font-label-caps text-[10px] tracking-tight">Activity</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[22px]">account_circle</span>
+<span class="font-label-caps text-[10px] tracking-tight">Profile</span>
+</a>
+</div>
+</nav>
+<script>
+    // Micro-interactions for Driver Companion Active Session
+    const extendStayBtn = document.getElementById('extendStayBtn');
+    const toast = document.getElementById('companionToast');
+    const toastMsgText = document.getElementById('toastMsgText');
+    const startGpsBtn = document.getElementById('startGpsBtn');
+
+    if (extendStayBtn && toast) {
+      extendStayBtn.addEventListener('click', () => {
+        toast.classList.remove('hidden');
+        toast.classList.add('flex');
+        toastMsgText.textContent = "Reservation Extended (+1h)! New exit window: 05:30 PM (₹25 auto-debited).";
+        extendStayBtn.classList.add('bg-secondary', 'text-on-secondary');
+        extendStayBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span> Extended (+1h)';
+        setTimeout(() => {
+          toast.classList.add('hidden');
+          toast.classList.remove('flex');
+        }, 4000);
+      });
+    }
+
+    if (startGpsBtn) {
+      startGpsBtn.addEventListener('click', () => {
+        const prevContent = startGpsBtn.innerHTML;
+        startGpsBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[18px]">progress_activity</span> Syncing Mysuru Palace Ingress Lane...';
+        setTimeout(() => {
+          startGpsBtn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span> Turn-by-Turn GPS Active';
+          startGpsBtn.classList.replace('bg-primary-container', 'bg-secondary');
+          startGpsBtn.classList.replace('text-on-primary-fixed', 'text-on-secondary');
+        }, 1500);
+      });
+    }
+
+    function openGpsModal() {
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+  </script>
+</body></html>

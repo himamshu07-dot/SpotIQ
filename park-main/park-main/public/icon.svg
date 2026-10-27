@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <rect width="512" height="512" rx="128" fill="#080B10" />
+  <circle cx="256" cy="256" r="220" stroke="#00e5ff" stroke-width="8" stroke-dasharray="24 16" opacity="0.3" />
+  <circle cx="256" cy="256" r="170" fill="url(#orb-grad)" opacity="0.15" />
+  <rect x="146" y="146" width="220" height="220" rx="44" fill="#00e5ff" />
+  <text x="256" y="295" font-family="'Plus Jakarta Sans', sans-serif" font-size="110" font-weight="900" fill="#001f24" text-anchor="middle">IQ</text>
+  <circle cx="370" cy="142" r="26" fill="#aff833" />
+  <defs>
+    <radialGradient id="orb-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00e5ff" />
+      <stop offset="100%" stop-color="#080B10" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+</svg>

@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><meta content="mobile_tab" name="shell-type"/><title>SpotIQ Mysuru - Complete Driver Journey Flow</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      "colors": {
+        "on-error": "#690005",
+        "error": "#ffb4ab",
+        "on-primary-fixed": "#001f24",
+        "tertiary": "#ffe7e6",
+        "surface-container-highest": "#32353b",
+        "surface-bright": "#36393f",
+        "on-primary": "#00363d",
+        "tertiary-container": "#ffc1c0",
+        "tertiary-fixed": "#ffdad9",
+        "surface-variant": "#32353b",
+        "secondary-fixed": "#aff833",
+        "on-tertiary-fixed-variant": "#920020",
+        "surface-container-lowest": "#080B10",
+        "secondary": "#aff833",
+        "on-secondary-fixed": "#121f00",
+        "tertiary-fixed-dim": "#ffb3b3",
+        "on-secondary": "#223600",
+        "on-tertiary-fixed": "#410009",
+        "on-surface-variant": "#bac9cc",
+        "primary-fixed": "#9cf0ff",
+        "secondary-fixed-dim": "#95da03",
+        "on-surface": "#e1e2ea",
+        "on-secondary-container": "#3c5b00",
+        "secondary-container": "#95da03",
+        "inverse-surface": "#e1e2ea",
+        "surface-tint": "#00daf3",
+        "on-primary-container": "#00626e",
+        "on-error-container": "#ffdad6",
+        "primary-fixed-dim": "#00daf3",
+        "surface-dim": "#101319",
+        "on-tertiary": "#680014",
+        "on-primary-fixed-variant": "#004f58",
+        "inverse-on-surface": "#2d3036",
+        "outline-variant": "#3b494c",
+        "on-secondary-fixed-variant": "#334f00",
+        "primary-container": "#00e5ff",
+        "outline": "#849396",
+        "inverse-primary": "#006875",
+        "surface-container-low": "#13171f",
+        "surface-container": "#191e27",
+        "surface": "#0c0f16",
+        "surface-container-high": "#222733",
+        "on-tertiary-container": "#ae1b30",
+        "background": "#080B10",
+        "primary": "#c3f5ff",
+        "error-container": "#93000a",
+        "on-background": "#e1e2ea"
+      },
+      "borderRadius": {
+        "DEFAULT": "1rem",
+        "lg": "2rem",
+        "xl": "3rem",
+        "full": "9999px"
+      },
+      "spacing": {
+        "space-lg": "1rem",
+        "margin": "1rem",
+        "space-sm": "0.5rem",
+        "space-xl": "1.5rem",
+        "gutter": "1rem",
+        "space-md": "0.75rem",
+        "space-xs": "0.25rem"
+      },
+      "fontFamily": {
+        "headline-md": ["Plus Jakarta Sans"],
+        "body-md": ["Plus Jakarta Sans"],
+        "label-caps": ["Plus Jakarta Sans"],
+        "display-lg": ["Plus Jakarta Sans"],
+        "label-lg": ["Plus Jakarta Sans"],
+        "body-lg": ["Plus Jakarta Sans"],
+        "title-md": ["Plus Jakarta Sans"],
+        "label-md": ["Plus Jakarta Sans"],
+        "body-sm": ["Plus Jakarta Sans"],
+        "headline-lg": ["Plus Jakarta Sans"],
+        "headline-sm": ["Plus Jakarta Sans"]
+      },
+      "fontSize": {
+        "headline-md": ["20px", {"lineHeight": "26px", "letterSpacing": "-0.015em", "fontWeight": "700"}],
+        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+        "label-caps": ["10px", {"lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "700"}],
+        "display-lg": ["32px", {"lineHeight": "38px", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+        "label-lg": ["14px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+        "title-md": ["16px", {"lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "600"}],
+        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+        "headline-lg": ["24px", {"lineHeight": "30px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "headline-sm": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+      }
+    }
+  }
+};</script><style>
+@layer base {
+  html, body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #080B10;
+    color: #e1e2ea;
+  }
+  .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+  .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+}
+::-webkit-scrollbar { display: none; }
+.step-pane { display: none; }
+.step-pane.active { display: block; }
+</style></head><body class="bg-surface font-body-md text-body-md flex flex-col min-h-screen antialiased selection:bg-primary-container selection:text-on-primary-fixed"><header class="fixed top-0 w-full z-50 pt-safe bg-surface-container-lowest/90 backdrop-blur-xl border-b border-surface-container-high/60 shadow-[0_4px_20px_rgba(0,0,0,0.6)]"><div class="h-16 px-margin flex items-center justify-between gap-space-sm"><div class="flex items-center gap-space-sm"><img alt="SpotIQ Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VxHBFgsnQzoa6mYx8Tis8_td61IGcPG6Eji5cVyQTwfaIOpTyej0VInNt2Z4og8k3btmJjCZodt9PaLtNwH_ec8pJltClgh8zq4rEq9TvESwfpwTkWnf1HOvvVAuFb_FxAjZ7L84lBsQZkrwEgVgOFlrYUqWrQlZHGgZvM7yQakcjXUSXGWp9kaaBb-0dTCpCCDqqv9peQOM5NQyBcKZYsxvLAOKwU9XUVD-yQKM8IS8u4XmYgQSPlyEg"/><button class="flex items-center gap-1 min-h-[44px] px-2.5 py-1 rounded-full bg-surface-container-low hover:bg-surface-container transition-colors text-left border border-white/5"><span class="material-symbols-outlined text-primary-container text-[18px]">near_me</span><div class="flex flex-col"><span class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider">Palace Hub</span><span class="font-title-md text-title-md text-on-surface flex items-center gap-0.5">Mysuru, KA<span class="material-symbols-outlined text-[16px] text-on-surface-variant">keyboard_arrow_down</span></span></div></button></div><div class="flex items-center gap-space-xs"><button aria-label="Notifications" class="w-10 h-10 flex items-center justify-center rounded-full bg-surface-container-low hover:bg-surface-container text-on-surface transition-colors relative border border-white/5"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-2.5 right-2.5 w-2 h-2 rounded-full bg-secondary ring-2 ring-surface-container-lowest"></span></button><button aria-label="User Profile" class="w-10 h-10 p-0.5 rounded-full flex items-center justify-center focus:outline-none hover:opacity-90 transition-opacity"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-primary-container/40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGRvsXIOJDp9oMBinPRaixXzHoRoqvLlDWpVZaGVVMADqRr-5vz_r82-reMEib9yUk2-4rT1nm6hbCRc1wb53Rz0hFcOf7yE4RCEPC_rxo9cHpK1YFjqH0P67Uu6BMD5SMo2vPADXeL7Kl7h0jcdlswANDcMh0axJAwekG6K47JBGz-Ghj93w4E-EC_elrw7Jh3bYvhR6EJpl3zXQuNFIqvh6LZlQx34b8kQWDwUjFU1dh0yGF4Ydf5w"/></button></div></div>
+<!-- Connected Interactive Driver Journey Stepper Switcher -->
+<div class="w-full bg-surface-container-lowest/95 backdrop-blur-md px-3 py-2 border-b border-surface-container-high/40 overflow-x-auto no-scrollbar"><div class="flex items-center gap-1.5 min-w-max" id="journey-stepper"><button class="step-btn px-3 py-1.5 rounded-full font-label-caps text-[11px] font-bold flex items-center gap-1.5 transition-all bg-primary-container text-on-primary-fixed shadow-[0_0_12px_rgba(0,229,255,0.45)]" data-step="1" type="button"><span class="w-4 h-4 rounded-full bg-surface-container-lowest text-primary-container flex items-center justify-center text-[10px] font-extrabold">1</span><span>Discover &amp; Map</span></button><button class="step-btn px-3 py-1.5 rounded-full font-label-caps text-[11px] font-semibold flex items-center gap-1.5 transition-all bg-surface-container-low text-on-surface-variant hover:text-on-surface border border-white/5" data-step="2" type="button"><span class="w-4 h-4 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center text-[10px]">2</span><span>Spot Details</span></button><button class="step-btn px-3 py-1.5 rounded-full font-label-caps text-[11px] font-semibold flex items-center gap-1.5 transition-all bg-surface-container-low text-on-surface-variant hover:text-on-surface border border-white/5" data-step="3" type="button"><span class="w-4 h-4 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center text-[10px]">3</span><span>Slot B04</span></button><button class="step-btn px-3 py-1.5 rounded-full font-label-caps text-[11px] font-semibold flex items-center gap-1.5 transition-all bg-surface-container-low text-on-surface-variant hover:text-on-surface border border-white/5" data-step="4" type="button"><span class="w-4 h-4 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center text-[10px]">4</span><span>Confirm &amp; Pay</span></button><button class="step-btn px-3 py-1.5 rounded-full font-label-caps text-[11px] font-semibold flex items-center gap-1.5 transition-all bg-surface-container-low text-on-surface-variant hover:text-on-surface border border-white/5" data-step="5" type="button"><span class="w-4 h-4 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center text-[10px]">5</span><span>Fast-Pass</span></button><button class="step-btn px-3 py-1.5 rounded-full font-label-caps text-[11px] font-semibold flex items-center gap-1.5 transition-all bg-surface-container-low text-on-surface-variant hover:text-on-surface border border-white/5" data-step="6" type="button"><span class="w-4 h-4 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center text-[10px]">6</span><span>Bookings</span></button></div></div></header><main class="flex-1 flex flex-col relative w-full pt-28 pb-24 bg-background">
+<!-- STEP 1: DISCOVER & MAP -->
+<section class="step-pane active" id="pane-1"><div class="flex flex-col w-full relative">
+<!-- Interactive Top Search & Telemetry Controls -->
+<div class="px-margin pt-2 pb-space-sm w-full z-20 flex flex-col gap-space-sm pointer-events-none">
+<!-- Elevated Dark Search Bar -->
+<div class="w-full bg-surface-container-high/95 backdrop-blur-xl rounded-full shadow-[0_12px_32px_rgba(0,0,0,0.65)] p-1.5 flex items-center justify-between pointer-events-auto transition-transform active:scale-[0.99] border border-white/10">
+<div class="flex items-center gap-space-sm pl-space-sm flex-1 min-w-0">
+<span class="material-symbols-outlined text-primary-container text-[22px] shrink-0" style="font-variation-settings: 'FILL' 1;">search</span>
+<div class="flex flex-col min-w-0 flex-1">
+<input class="bg-transparent text-on-surface font-title-md text-title-md placeholder:text-outline focus:outline-none w-full truncate cursor-pointer" placeholder="Where to park in Mysuru?" type="text" value="Mysore Palace East Gate"/>
+<div class="flex items-center gap-1 text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary shrink-0 animate-ping"></span>
+<span class="truncate text-[10px]">Mysuru Smart City Live Grid</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-1 shrink-0 pr-1">
+<button aria-label="Voice Search" class="w-10 h-10 rounded-full bg-surface-container-highest hover:bg-surface-bright text-primary-container flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[19px]">mic</span>
+</button>
+<button aria-label="Filters" class="w-10 h-10 rounded-full bg-primary-container text-on-primary-fixed flex items-center justify-center shadow-[0_0_14px_rgba(0,229,255,0.4)] transition-transform active:scale-95" type="button">
+<span class="material-symbols-outlined text-[19px]" style="font-variation-settings: 'FILL' 1;">tune</span>
+</button>
+</div>
+</div>
+<!-- Quick Location Indicator Pill -->
+<div class="flex items-center justify-between pointer-events-auto">
+<div class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low/90 backdrop-blur-md shadow-md border border-white/5">
+<span class="material-symbols-outlined text-secondary text-[16px]">fmd_good</span>
+<span class="font-label-md text-label-md text-on-surface">Near Mysore Palace</span>
+<span class="text-outline font-label-caps text-label-caps">•</span>
+<span class="font-label-caps text-label-caps text-secondary-fixed">GPS locked</span>
+</div>
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md shadow-sm border border-secondary/20">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-caps text-label-caps text-secondary font-bold">74 SPOTS IN 500M</span>
+</div>
+</div>
+</div>
+<!-- Vector Map Canvas -->
+<div class="relative w-full h-[370px] -mt-12 overflow-hidden bg-surface-container-lowest select-none">
+<div class="w-full h-full bg-cover bg-center brightness-[0.7] contrast-[1.15]" data-location="Mysore Palace, Mysuru, Karnataka" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1O_DeAFm94XP3no__hV7o99eD52BlTEkMwCwX-bVA3ip-PjEHry1M6YdLq4q0KqIrFlGu6jvrQ_LUEcvHThTJGg6Bg5pHvJMvCgHOrOwScsyuqDex8xGjwWUCcKgOhj6qeikqyqTPSS66CLbSChiCrRVCtzur8Sr4r0faGIIQ5RqLDTROno1fieQFxaydclALXnGpQdgn6xJ3hMlo9Tz9gyPZhvkxJPU6CpDWFjCYPJyPht3VB0lA_Q');">
+<div class="absolute inset-0 bg-gradient-to-b from-surface/80 via-surface-container-lowest/60 to-surface-container-lowest"></div>
+<svg class="absolute inset-0 w-full h-full opacity-60 pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#1f2c38" stroke-linecap="round" stroke-width="8" x1="20%" x2="80%" y1="10%" y2="85%"></line>
+<line stroke="#19232f" stroke-width="6" x1="75%" x2="25%" y1="15%" y2="90%"></line>
+<line opacity="0.5" stroke="#00e5ff" stroke-dasharray="6 8" stroke-width="2.5" x1="0%" x2="100%" y1="52%" y2="52%"></line>
+</svg>
+<div class="absolute top-28 left-4 px-2 py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur text-outline text-[10px] font-label-caps tracking-widest uppercase border border-white/5">Sayyaji Rao Rd</div>
+<div class="absolute top-44 right-8 px-2 py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur text-outline text-[10px] font-label-caps tracking-widest uppercase border border-white/5">Ashoka Rd</div>
+</div>
+<!-- PINS CONTAINER -->
+<div class="absolute inset-0 pointer-events-none">
+<!-- 1. SELECTED PIN -->
+<div class="absolute top-[46%] left-[45%] -translate-x-1/2 -translate-y-full flex flex-col items-center pointer-events-auto cursor-pointer group z-30" onclick="switchStep(2)">
+<div class="px-2.5 py-1 rounded-full bg-surface-container-lowest text-primary shadow-[0_0_20px_rgba(0,229,255,0.7)] flex items-center gap-1.5 border border-primary-container/40">
+<span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_8px_#00E5FF] animate-pulse"></span>
+<span class="font-headline-sm text-[12px] leading-tight text-primary-container font-extrabold tracking-tight">38 spots</span>
+<span class="text-outline text-[11px]">•</span>
+<span class="font-label-caps text-label-caps text-on-surface">₹30/hr</span>
+</div>
+<div class="relative flex items-center justify-center -mt-0.5">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center animate-ping absolute"></div>
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center shadow-lg shadow-primary-container/40">
+<span class="material-symbols-outlined text-surface-container-lowest text-[15px]" style="font-variation-settings: 'FILL' 1;">local_parking</span>
+</div>
+</div>
+<span class="mt-1 px-1.5 py-0.5 rounded bg-surface-container-lowest/90 font-label-caps text-[9px] text-primary tracking-tight uppercase shadow-sm border border-white/5">Palace MLCP</span>
+</div>
+<!-- 2. Devaraja Market -->
+<div class="absolute top-[28%] left-[24%] -translate-x-1/2 -translate-y-full flex flex-col items-center pointer-events-auto cursor-pointer group z-20">
+<div class="px-2 py-0.5 rounded-full bg-surface-container-low text-secondary flex items-center gap-1 shadow-md shadow-black/60 border border-secondary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md text-secondary font-bold">14 spots</span>
+<span class="text-outline font-label-caps text-[9px]">• ₹20</span>
+</div>
+<div class="w-4 h-4 rounded-full bg-secondary/90 flex items-center justify-center shadow-sm -mt-0.5">
+<span class="material-symbols-outlined text-on-secondary text-[11px]">local_parking</span>
+</div>
+</div>
+<!-- 3. Sayyaji Rao Plaza -->
+<div class="absolute top-[22%] right-[18%] -translate-x-1/2 -translate-y-full flex flex-col items-center pointer-events-auto cursor-pointer group z-20">
+<div class="px-2 py-0.5 rounded-full bg-surface-container-low text-secondary flex items-center gap-1 shadow-md shadow-black/60 border border-secondary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-md text-label-md text-secondary font-bold">22 spots</span>
+<span class="text-outline font-label-caps text-[9px]">• ₹40</span>
+</div>
+<div class="w-4 h-4 rounded-full bg-secondary/90 flex items-center justify-center shadow-sm -mt-0.5">
+<span class="material-symbols-outlined text-on-secondary text-[11px]">local_parking</span>
+</div>
+</div>
+<!-- 4. Occupied Bus Stand -->
+<div class="absolute bottom-[36%] right-[22%] -translate-x-1/2 -translate-y-full flex flex-col items-center pointer-events-auto cursor-pointer group opacity-90 z-20">
+<div class="px-2 py-0.5 rounded-full bg-surface-container-low text-error flex items-center gap-1 shadow-md">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+<span class="font-label-caps text-label-caps uppercase text-error font-bold">FULL</span>
+</div>
+<div class="w-4 h-4 rounded-full bg-error flex items-center justify-center shadow-sm -mt-0.5">
+<span class="material-symbols-outlined text-on-error text-[10px]">close</span>
+</div>
+</div>
+<!-- User Current GPS Dot -->
+<div class="absolute top-[68%] left-[38%] -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 animate-ping absolute"></div>
+<div class="w-4 h-4 rounded-full bg-surface-container-lowest flex items-center justify-center shadow-md">
+<div class="w-2.5 h-2.5 rounded-full bg-primary-container"></div>
+</div>
+</div>
+</div>
+<!-- Map Floating Controls -->
+<div class="absolute right-4 top-20 flex flex-col gap-2 z-20">
+<button aria-label="Recenter GPS" class="w-11 h-11 rounded-full bg-surface-container-high/90 backdrop-blur-md text-primary-container flex items-center justify-center shadow-xl active:scale-95 transition-transform border border-white/10" type="button">
+<span class="material-symbols-outlined text-[20px]">my_location</span>
+</button>
+<button aria-label="Map Layers" class="w-11 h-11 rounded-full bg-surface-container-high/90 backdrop-blur-md text-on-surface flex items-center justify-center shadow-xl active:scale-95 transition-transform border border-white/10" type="button">
+<span class="material-symbols-outlined text-[20px]">layers</span>
+</button>
+</div>
+<!-- Floating Legend -->
+<div class="absolute left-4 bottom-14 z-20 px-3 py-1.5 rounded-full bg-surface-container-lowest/85 backdrop-blur-md shadow-md flex items-center gap-3 border border-white/5">
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-primary-container shadow-[0_0_6px_#00E5FF]"></span>
+<span class="font-label-caps text-label-caps text-on-surface">Selected</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-caps text-label-caps text-on-surface">Available</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-label-caps text-label-caps text-on-surface">Full</span>
+</div>
+</div>
+</div>
+<!-- Draggable Bottom Sheet Layer -->
+<div class="relative z-30 -mt-10 rounded-t-lg bg-surface-container-lowest shadow-[0_-16px_36px_rgba(0,0,0,0.7)] pt-space-sm px-margin pb-6 flex flex-col border-t border-surface-container-high/60">
+<div class="w-full flex justify-center pb-2">
+<div class="w-12 h-1.5 rounded-full bg-surface-variant"></div>
+</div>
+<div class="flex items-center justify-between pt-1 pb-space-sm">
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Parking near you</h2>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary-container font-label-caps text-label-caps font-bold">4 available</span>
+</div>
+<span class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Mysuru Central</span>
+</div>
+<!-- Filter Chips -->
+<div class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-3 pt-0.5">
+<button class="px-3.5 py-1.5 rounded-full bg-primary-container text-on-primary-fixed font-label-md text-label-md flex items-center gap-1.5 shrink-0 shadow-[0_0_12px_rgba(0,229,255,0.35)]" type="button">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">near_me</span>
+Closest first
+</button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface hover:bg-surface-bright font-label-md text-label-md flex items-center gap-1 shrink-0 transition-colors border border-white/5" type="button">
+<span class="material-symbols-outlined text-[16px] text-secondary">bolt</span>
+EV Fast Charging
+</button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface hover:bg-surface-bright font-label-md text-label-md flex items-center gap-1 shrink-0 transition-colors border border-white/5" type="button">
+<span class="material-symbols-outlined text-[16px] text-outline">roofing</span>
+Covered Roof
+</button>
+<button class="px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface hover:bg-surface-bright font-label-md text-label-md flex items-center gap-1 shrink-0 transition-colors border border-white/5" type="button">
+<span class="material-symbols-outlined text-[16px] text-outline">payments</span>
+Lowest Price
+</button>
+</div>
+<!-- Primary Card: Palace South Gate -->
+<div class="mt-space-xs rounded-xl bg-surface-container p-4 flex flex-col gap-space-md shadow-lg shadow-black/50 relative overflow-hidden border border-white/5">
+<div class="absolute -top-12 -right-12 w-36 h-36 bg-primary-container/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-start justify-between gap-space-sm relative">
+<div class="flex items-start gap-3 min-w-0">
+<div class="w-12 h-12 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 border border-white/5">
+<span class="material-symbols-outlined text-primary-container text-[26px]">garage</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<h3 class="font-headline-sm text-headline-sm text-on-surface truncate">Palace South Gate MLCP</h3>
+<span class="material-symbols-outlined text-secondary text-[16px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex items-center gap-2 mt-0.5 text-on-surface-variant font-label-md text-label-md">
+<span class="flex items-center gap-0.5 text-primary-container">
+<span class="material-symbols-outlined text-[14px]">directions_walk</span>
+180m • 3 min walk
+</span>
+<span>•</span>
+<span class="text-on-surface-variant truncate">Bangalore-Nilgiri Rd</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0">
+<div class="font-display-lg text-[22px] leading-tight text-primary-container font-extrabold">₹30</div>
+<div class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Per Hour</div>
+</div>
+</div>
+<div class="flex flex-col gap-1.5 bg-surface-container-lowest/70 p-3 rounded-lg border border-white/5">
+<div class="flex items-center justify-between text-body-sm font-label-md">
+<span class="text-on-surface flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary shadow-[0_0_8px_#aff833]"></span>
+<span class="font-bold text-secondary">38 stalls left</span>
+<span class="text-outline font-normal">of 120 total</span>
+</span>
+<span class="text-outline font-label-caps text-label-caps uppercase">68% full</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden flex">
+<div class="h-full bg-secondary rounded-full shadow-[0_0_8px_rgba(175,248,51,0.6)]" style="width: 32%;"></div>
+</div>
+</div>
+<div class="flex items-center gap-2 flex-wrap">
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest font-label-caps text-label-caps text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-primary-container">roofing</span>
+Covered Multi-Level
+</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest font-label-caps text-label-caps text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-secondary">bolt</span>
+4x 60kW DC Fast EV
+</span>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-highest font-label-caps text-label-caps text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-on-surface-variant">shield</span>
+24/7 CCTV &amp; Valet
+</span>
+</div>
+<button class="w-full h-14 rounded-full bg-primary-container text-on-primary-fixed font-headline-sm text-headline-sm font-extrabold flex items-center justify-center gap-2 shadow-[0_0_24px_rgba(0,229,255,0.45)] active:scale-[0.98] transition-all hover:brightness-110 cursor-pointer" onclick="switchStep(2)" type="button">
+<span>Select Facility &amp; View Slots</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- Secondary Card -->
+<div class="mt-3 rounded-lg bg-surface-container-low p-3.5 flex items-center justify-between gap-3 active:scale-[0.99] transition-transform cursor-pointer hover:bg-surface-container border border-white/5">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary text-[20px]">local_parking</span>
+</div>
+<div class="flex flex-col min-w-0">
+<h4 class="font-title-md text-title-md text-on-surface truncate">Devaraja Market Underground</h4>
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span>420m • 6 min walk</span>
+<span>•</span>
+<span class="text-secondary font-semibold">14 spots left</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<div class="text-right">
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">₹20<span class="text-[11px] text-outline font-normal">/hr</span></div>
+<span class="font-label-caps text-label-caps text-secondary-fixed uppercase">Vacant</span>
+</div>
+<span class="material-symbols-outlined text-outline text-[20px]">chevron_right</span>
+</div>
+</div>
+<div class="mt-4 flex items-center justify-center gap-1.5 text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider opacity-75">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>Simulated live feed • Mysore Smart City Grid IoT</span>
+</div>
+</div>
+</div></section>
+<!-- STEP 2: SPOT DETAILS -->
+<section class="step-pane px-margin py-space-sm" id="pane-2">
+<div class="flex flex-col gap-4">
+<!-- Facility Hero Media Banner -->
+<div class="relative w-full h-48 rounded-xl overflow-hidden border border-white/10 shadow-xl">
+<img alt="Palace Multi Level Parking" class="w-full h-full object-cover brightness-75" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1O_DeAFm94XP3no__hV7o99eD52BlTEkMwCwX-bVA3ip-PjEHry1M6YdLq4q0KqIrFlGu6jvrQ_LUEcvHThTJGg6Bg5pHvJMvCgHOrOwScsyuqDex8xGjwWUCcKgOhj6qeikqyqTPSS66CLbSChiCrRVCtzur8Sr4r0faGIIQ5RqLDTROno1fieQFxaydclALXnGpQdgn6xJ3hMlo9Tz9gyPZhvkxJPU6CpDWFjCYPJyPht3VB0lA_Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 px-3 py-1 rounded-full bg-surface-container-lowest/80 backdrop-blur-md border border-secondary/30 flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label-caps text-[11px] text-secondary font-bold">OPEN 24 HOURS</span>
+</div>
+<div class="absolute bottom-3 left-3 right-3 flex items-end justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-primary-container uppercase font-bold tracking-wider">Multi-Level Car Park</span>
+<h2 class="font-headline-lg text-headline-lg text-white font-extrabold leading-tight">Palace South Gate MLCP</h2>
+<p class="text-on-surface-variant text-body-sm flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-secondary">pin_drop</span> Near Gun House Circle, Mysuru</p>
+</div>
+<div class="text-right">
+<div class="text-primary-container font-display-lg text-[24px] font-extrabold">₹30</div>
+<div class="text-outline font-label-caps text-[10px]">BASE RATE / HR</div>
+</div>
+</div>
+</div>
+<!-- Real-time Status Card -->
+<div class="grid grid-cols-3 gap-2.5">
+<div class="rounded-lg bg-surface-container p-3 flex flex-col items-center justify-center text-center border border-white/5">
+<span class="material-symbols-outlined text-secondary text-[22px] mb-1">local_parking</span>
+<span class="font-headline-sm text-headline-sm text-secondary font-extrabold">38</span>
+<span class="font-label-caps text-[10px] text-outline uppercase">Stalls Free</span>
+</div>
+<div class="rounded-lg bg-surface-container p-3 flex flex-col items-center justify-center text-center border border-white/5">
+<span class="material-symbols-outlined text-primary-container text-[22px] mb-1">electric_car</span>
+<span class="font-headline-sm text-headline-sm text-primary-container font-extrabold">4 / 4</span>
+<span class="font-label-caps text-[10px] text-outline uppercase">EV 60kW Available</span>
+</div>
+<div class="rounded-lg bg-surface-container p-3 flex flex-col items-center justify-center text-center border border-white/5">
+<span class="material-symbols-outlined text-white text-[22px] mb-1">near_me</span>
+<span class="font-headline-sm text-headline-sm text-white font-extrabold">180m</span>
+<span class="font-label-caps text-[10px] text-outline uppercase">Walk to Palace</span>
+</div>
+</div>
+<!-- Detailed Features & Amenities -->
+<div class="rounded-xl bg-surface-container p-4 border border-white/5 flex flex-col gap-3">
+<h3 class="font-title-md text-title-md text-on-surface font-bold flex items-center gap-1.5"><span class="material-symbols-outlined text-primary-container text-[18px]">verified_user</span> Facility Highlights &amp; Access</h3>
+<div class="space-y-2.5">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 text-secondary"><span class="material-symbols-outlined text-[18px]">camera_indoor</span></div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface font-semibold">ANPR Automated Boom Barrier</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Instant entry scan via digital QR pass &amp; license plate recognition.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 text-primary-container"><span class="material-symbols-outlined text-[18px]">ev_station</span></div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface font-semibold">CCS-2 DC Fast Charging Hub</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Located on Level 2 (Bays B01 to B06) with integrated energy billing.</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center shrink-0 text-outline"><span class="material-symbols-outlined text-[18px]">elevator</span></div>
+<div>
+<p class="font-label-lg text-label-lg text-on-surface font-semibold">Elevators &amp; Covered Walkway</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Direct pedestrian tunnel to South Gate security entry line.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Dynamic Action Footer -->
+<div class="pt-2 flex flex-col gap-2">
+<button class="w-full h-14 rounded-full bg-primary-container text-on-primary-fixed font-headline-sm text-headline-sm font-extrabold flex items-center justify-center gap-2 shadow-[0_0_24px_rgba(0,229,255,0.45)] hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer" onclick="switchStep(3)" type="button">
+<span>Choose Stall on Interactive Deck</span>
+<span class="material-symbols-outlined text-[20px]">touch_app</span>
+</button>
+<button class="w-full h-11 rounded-full bg-surface-container-high text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-1.5 border border-white/5 hover:bg-surface-bright transition-colors" onclick="switchStep(1)" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Return to Map Search</span>
+</button>
+</div>
+</div>
+</section>
+<!-- STEP 3: SLOT SELECT (SLOT B04) -->
+<section class="step-pane px-margin py-space-sm" id="pane-3">
+<div class="flex flex-col gap-3.5">
+<!-- Header & Deck Switcher -->
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-primary-container uppercase font-bold tracking-wider">Level 2 • EV Priority Deck</span>
+<h2 class="font-headline-md text-headline-md text-white font-extrabold">Pick Your Stall</h2>
+</div>
+<div class="flex items-center bg-surface-container-high p-1 rounded-full border border-white/10">
+<button class="px-2.5 py-1 rounded-full text-xs font-label-caps text-outline hover:text-white transition-colors" type="button">L1 Standard</button>
+<button class="px-2.5 py-1 rounded-full text-xs font-label-caps bg-primary-container text-on-primary-fixed font-bold shadow-sm" type="button">L2 EV Hub</button>
+<button class="px-2.5 py-1 rounded-full text-xs font-label-caps text-outline hover:text-white transition-colors" type="button">L3 Rooftop</button>
+</div>
+</div>
+<!-- Parking Bay Visual Blueprint Layout -->
+<div class="rounded-xl bg-surface-container-lowest border border-white/10 p-3.5 shadow-2xl relative overflow-hidden">
+<div class="flex items-center justify-between pb-3 border-b border-surface-container-high/60">
+<div class="flex items-center gap-2 text-xs">
+<span class="material-symbols-outlined text-secondary text-[16px]">sensors</span>
+<span class="font-label-md text-on-surface">Floor Sensors Active</span>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-high text-outline text-[11px] font-label-caps font-semibold">ENTRY GATE 2 &gt;&gt;</span>
+</div>
+<!-- Drive Lane & Slot Grid -->
+<div class="py-3 flex flex-col gap-3">
+<div class="text-[11px] font-label-caps text-outline uppercase tracking-wider flex items-center justify-between">
+<span>Section B (East Side Bays)</span>
+<span class="text-secondary font-bold">12 Slots Monitored</span>
+</div>
+<!-- Slot Row Upper -->
+<div class="grid grid-cols-4 gap-2">
+<!-- Slot B01 (EV Occupied) -->
+<div class="h-20 rounded-lg bg-surface-container-low border border-white/5 p-2 flex flex-col justify-between opacity-50 cursor-not-allowed">
+<div class="flex items-center justify-between"><span class="font-label-caps text-xs text-outline">B01</span><span class="material-symbols-outlined text-[14px] text-error">close</span></div>
+<span class="text-[10px] text-error font-label-caps font-bold">OCCUPIED</span>
+</div>
+<!-- Slot B02 (Occupied) -->
+<div class="h-20 rounded-lg bg-surface-container-low border border-white/5 p-2 flex flex-col justify-between opacity-50 cursor-not-allowed">
+<div class="flex items-center justify-between"><span class="font-label-caps text-xs text-outline">B02</span><span class="material-symbols-outlined text-[14px] text-error">close</span></div>
+<span class="text-[10px] text-error font-label-caps font-bold">KA-09-EA</span>
+</div>
+<!-- Slot B03 (Available) -->
+<div class="h-20 rounded-lg bg-surface-container border border-secondary/40 p-2 flex flex-col justify-between cursor-pointer hover:border-secondary transition-colors" onclick="selectSlot('B03')">
+<div class="flex items-center justify-between"><span class="font-label-caps text-xs text-secondary font-bold">B03</span><span class="material-symbols-outlined text-[14px] text-secondary">check</span></div>
+<span class="text-[10px] text-secondary font-label-caps font-bold">₹30/h</span>
+</div>
+<!-- Slot B04 (TARGET SELECTED) -->
+<div class="h-20 rounded-lg bg-primary-container/15 border-2 border-primary-container p-2 flex flex-col justify-between relative shadow-[0_0_18px_rgba(0,229,255,0.45)] cursor-pointer" id="slot-b04">
+<div class="flex items-center justify-between"><span class="font-label-caps text-xs text-primary-container font-extrabold">B04</span><span class="material-symbols-outlined text-[16px] text-primary-container" style="font-variation-settings: 'FILL' 1;">electric_car</span></div>
+<div class="flex items-center justify-between">
+<span class="px-1.5 py-0.5 rounded bg-primary-container text-on-primary-fixed text-[9px] font-extrabold">SELECTED</span>
+<span class="text-xs text-primary-container font-bold">60kW</span>
+</div>
+</div>
+</div>
+<!-- Central Driveway Indicator -->
+<div class="h-9 rounded-md bg-surface-container-high/40 border border-dashed border-outline-variant flex items-center justify-center gap-3">
+<span class="material-symbols-outlined text-outline text-[16px]">arrow_forward</span>
+<span class="font-label-caps text-[10px] text-outline tracking-widest uppercase">Central Driveway — Follow Neon Guide Lights</span>
+<span class="material-symbols-outlined text-outline text-[16px]">arrow_forward</span>
+</div>
+<!-- Slot Row Lower -->
+<div class="grid grid-cols-4 gap-2">
+<!-- Slot B05 -->
+<div class="h-20 rounded-lg bg-surface-container border border-secondary/40 p-2 flex flex-col justify-between cursor-pointer hover:border-secondary transition-colors" onclick="selectSlot('B05')">
+<div class="flex items-center justify-between"><span class="font-label-caps text-xs text-secondary font-bold">B05</span><span class="material-symbols-outlined text-[14px] text-secondary">bolt</span></div>
+<span class="text-[10px] text-secondary font-label-caps font-bold">₹30/h</span>
+</div>
+<!-- Slot B06 -->
+<div class="h-20 rounded-lg bg-surface-container-low border border-white/5 p-2 flex flex-col justify-between opacity-50 cursor-not-allowed">
+<div class="flex items-center justify-between"><span class="font-label-caps text-xs text-outline">B06</span><span class="material-symbols-outlined text-[14px] text-error">close</span></div>
+<span class="text-[10px] text-error font-label-caps font-bold">OCCUPIED</span>
+</div>
+<!-- Slot B07 -->
+<div class="h-20 rounded-lg bg-surface-container border border-secondary/40 p-2 flex flex-col justify-between cursor-pointer hover:border-secondary transition-colors" onclick="selectSlot('B07')">
+<div class="flex items-center justify-between"><span class="font-label-caps text-xs text-secondary font-bold">B07</span><span class="material-symbols-outlined text-[14px] text-secondary">check</span></div>
+<span class="text-[10px] text-secondary font-label-caps font-bold">₹30/h</span>
+</div>
+<!-- Slot B08 (Occupied) -->
+<div class="h-20 rounded-lg bg-surface-container-low border border-white/5 p-2 flex flex-col justify-between opacity-50 cursor-not-allowed">
+<div class="flex items-center justify-between"><span class="font-label-caps text-xs text-outline">B08</span><span class="material-symbols-outlined text-[14px] text-error">close</span></div>
+<span class="text-[10px] text-error font-label-caps font-bold">KA-55-M</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Selected Slot B04 Specification Card -->
+<div class="rounded-xl bg-surface-container p-4 border border-primary-container/30 flex flex-col gap-2 shadow-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[22px]">ev_station</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-white font-bold">Slot B04 Confirmed</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Level 2 • Wide Stall with 60kW DC Fast Port</p>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary/15 text-secondary text-xs font-bold border border-secondary/30">Sensor Ready</span>
+</div>
+<div class="pt-1 flex items-center justify-between text-xs text-outline border-t border-white/5 mt-1">
+<span>Automatic 15-min hold granted upon selection</span>
+<span class="text-primary-container font-semibold">14:59 left</span>
+</div>
+</div>
+<!-- CTA Buttons -->
+<div class="pt-1 flex flex-col gap-2">
+<button class="w-full h-14 rounded-full bg-primary-container text-on-primary-fixed font-headline-sm text-headline-sm font-extrabold flex items-center justify-center gap-2 shadow-[0_0_24px_rgba(0,229,255,0.45)] hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer" onclick="switchStep(4)" type="button">
+<span>Lock Slot B04 &amp; Proceed to Pay</span>
+<span class="material-symbols-outlined text-[20px]">lock_clock</span>
+</button>
+<button class="w-full h-11 rounded-full bg-surface-container-high text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-1.5 border border-white/5 hover:bg-surface-bright transition-colors" onclick="switchStep(2)" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Back to Facility Overview</span>
+</button>
+</div>
+</div>
+</section>
+<!-- STEP 4: CONFIRM & PAY -->
+<section class="step-pane px-margin py-space-sm" id="pane-4">
+<div class="flex flex-col gap-3.5">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase font-bold tracking-wider">Fast Checkout</span>
+<h2 class="font-headline-md text-headline-md text-white font-extrabold">Confirm &amp; Pay</h2>
+</div>
+<span class="px-3 py-1 rounded-full bg-surface-container-high text-xs font-bold text-primary-container border border-primary-container/30">1-Tap FastPass</span>
+</div>
+<!-- Booking Summary Card -->
+<div class="rounded-xl bg-surface-container p-4 border border-white/10 flex flex-col gap-3 shadow-xl">
+<div class="flex items-start justify-between pb-3 border-b border-surface-container-high">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-white font-bold">Palace South Gate MLCP</h3>
+<p class="text-body-sm text-on-surface-variant flex items-center gap-1 mt-0.5"><span class="material-symbols-outlined text-[14px] text-primary-container">pin_drop</span> Slot B04 • Level 2 (EV Charger)</p>
+</div>
+<div class="px-2.5 py-1 rounded-md bg-primary-container/20 text-primary-container font-label-caps text-xs font-extrabold">B04</div>
+</div>
+<!-- Schedule / Duration Selector -->
+<div class="grid grid-cols-2 gap-2 text-xs">
+<div class="p-2.5 rounded-lg bg-surface-container-lowest border border-white/5">
+<span class="text-outline font-label-caps text-[10px] uppercase">Arrival Time</span>
+<p class="font-title-md text-title-md text-white font-semibold mt-0.5">Today, 04:30 PM</p>
+<span class="text-[11px] text-secondary">Grace period 15m</span>
+</div>
+<div class="p-2.5 rounded-lg bg-surface-container-lowest border border-white/5">
+<span class="text-outline font-label-caps text-[10px] uppercase">Duration</span>
+<p class="font-title-md text-title-md text-white font-semibold mt-0.5">2 Hours</p>
+<span class="text-[11px] text-on-surface-variant">Until 06:30 PM</span>
+</div>
+</div>
+<!-- Vehicle Details Tag -->
+<div class="p-2.5 rounded-lg bg-surface-container-low flex items-center justify-between border border-white/5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container text-[20px]">directions_car</span>
+<div>
+<p class="font-label-md text-label-md text-white font-semibold">Tata Nexon EV (Dark Edition)</p>
+<span class="text-[11px] text-on-surface-variant">KA-09-MD-2024 • ANPR Auto-Link</span>
+</div>
+</div>
+<button class="text-xs text-primary-container font-semibold" type="button">Change</button>
+</div>
+<!-- Bill Breakdown -->
+<div class="space-y-1.5 pt-1 text-xs">
+<div class="flex justify-between text-on-surface-variant">
+<span>Parking Rate (2 hrs @ ₹30/hr)</span>
+<span class="text-white font-medium">₹60.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>EV Charging Reserve &amp; Grid Access</span>
+<span class="text-white font-medium">₹25.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Mysuru Smart City Platform Levy</span>
+<span class="text-white font-medium">₹4.50</span>
+</div>
+<div class="flex justify-between text-secondary">
+<span>Special Dasara Promo Discount</span>
+<span class="font-bold">- ₹10.00</span>
+</div>
+<div class="pt-2 border-t border-surface-container-high flex justify-between items-center text-sm">
+<span class="font-bold text-white">Total Amount Due</span>
+<span class="font-display-lg text-[20px] font-extrabold text-primary-container">₹79.50</span>
+</div>
+</div>
+</div>
+<!-- Payment Methods Selection -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-[11px] text-outline uppercase tracking-wider">Choose Payment Method</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="p-3 rounded-xl bg-surface-container border-2 border-primary-container flex items-center gap-2.5 text-left transition-all shadow-[0_0_12px_rgba(0,229,255,0.2)]" type="button">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</div>
+<div>
+<p class="font-label-md text-xs font-bold text-white">UPI Instant</p>
+<p class="text-[10px] text-outline">GPay / PhonePe</p>
+</div>
+</button>
+<button class="p-3 rounded-xl bg-surface-container border border-white/10 flex items-center gap-2.5 text-left hover:border-white/20 transition-all" type="button">
+<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant shrink-0">
+<span class="material-symbols-outlined text-[18px]">credit_card</span>
+</div>
+<div>
+<p class="font-label-md text-xs font-bold text-white">Card / FASTag</p>
+<p class="text-[10px] text-outline">Automated deduction</p>
+</div>
+</button>
+</div>
+</div>
+<!-- Action CTA -->
+<div class="pt-1 flex flex-col gap-2">
+<button class="w-full h-14 rounded-full bg-secondary text-on-secondary font-headline-sm text-headline-sm font-extrabold flex items-center justify-center gap-2 shadow-[0_0_24px_rgba(175,248,51,0.5)] hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer" onclick="switchStep(5)" type="button">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+<span>Pay ₹79.50 &amp; Generate FastPass</span>
+</button>
+<button class="w-full h-11 rounded-full bg-surface-container-high text-on-surface font-label-lg text-label-lg flex items-center justify-center gap-1.5 border border-white/5 hover:bg-surface-bright transition-colors" onclick="switchStep(3)" type="button">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Change Slot Selection</span>
+</button>
+</div>
+</div>
+</section>
+<!-- STEP 5: ACTIVE FAST-PASS & INGRESS -->
+<section class="step-pane px-margin py-space-sm" id="pane-5">
+<div class="flex flex-col gap-3.5">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase font-bold tracking-wider">Turnstile Ready</span>
+<h2 class="font-headline-md text-headline-md text-white font-extrabold">Active Entry Fast-Pass</h2>
+</div>
+<div class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary/15 border border-secondary/40 text-secondary font-label-caps text-[11px] font-bold">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+<span>LIVE AT BOOM BARRIER</span>
+</div>
+</div>
+<!-- Fast-Pass Digital Ticket with Simulated QR -->
+<div class="rounded-2xl bg-surface-container-lowest border-2 border-primary-container/50 p-5 shadow-[0_0_35px_rgba(0,229,255,0.25)] relative overflow-hidden flex flex-col items-center">
+<div class="absolute -top-10 -right-10 w-28 h-28 bg-primary-container/15 rounded-full blur-xl pointer-events-none"></div>
+<!-- Facility & Slot Header -->
+<div class="w-full flex items-start justify-between pb-3 border-b border-surface-container-high">
+<div>
+<span class="text-[10px] font-label-caps text-primary-container font-extrabold uppercase">Palace South Gate MLCP</span>
+<h3 class="font-headline-sm text-headline-sm text-white font-bold">Slot B04 (Level 2)</h3>
+<p class="text-xs text-on-surface-variant">Reg: KA-09-MD-2024</p>
+</div>
+<div class="text-right">
+<span class="px-2.5 py-1 rounded-full bg-secondary text-on-secondary font-label-caps text-[11px] font-black">VALID ENTRY</span>
+<p class="text-[10px] text-outline mt-1">Pass ID: #SP-88319</p>
+</div>
+</div>
+<!-- QR Graphic Block -->
+<div class="my-4 p-3 bg-white rounded-xl shadow-lg flex flex-col items-center justify-center">
+<!-- SVG Styled QR Code Simulation -->
+<svg class="w-44 h-44 text-surface-container-lowest" viewbox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<!-- Corner Anchors -->
+<rect fill="#080B10" height="26" width="26" x="4" y="4"></rect>
+<rect fill="#FFFFFF" height="18" width="18" x="8" y="8"></rect>
+<rect fill="#080B10" height="10" width="10" x="12" y="12"></rect>
+<rect fill="#080B10" height="26" width="26" x="70" y="4"></rect>
+<rect fill="#FFFFFF" height="18" width="18" x="74" y="8"></rect>
+<rect fill="#080B10" height="10" width="10" x="78" y="12"></rect>
+<rect fill="#080B10" height="26" width="26" x="4" y="70"></rect>
+<rect fill="#FFFFFF" height="18" width="18" x="8" y="74"></rect>
+<rect fill="#080B10" height="10" width="10" x="12" y="78"></rect>
+<!-- Data Dot Grid Matrix Simulation -->
+<rect fill="#080B10" height="5" width="5" x="35" y="8"></rect>
+<rect fill="#080B10" height="5" width="5" x="45" y="8"></rect>
+<rect fill="#080B10" height="5" width="5" x="55" y="14"></rect>
+<rect fill="#080B10" height="5" width="5" x="35" y="22"></rect>
+<rect fill="#080B10" height="5" width="5" x="48" y="26"></rect>
+<rect fill="#080B10" height="5" width="5" x="10" y="38"></rect>
+<rect fill="#080B10" height="5" width="5" x="22" y="45"></rect>
+<rect fill="#080B10" height="5" width="5" x="35" y="40"></rect>
+<rect fill="#080B10" height="5" width="5" x="45" y="45"></rect>
+<rect fill="#080B10" height="5" width="5" x="58" y="40"></rect>
+<rect fill="#080B10" height="5" width="5" x="72" y="44"></rect>
+<rect fill="#080B10" height="5" width="5" x="85" y="38"></rect>
+<rect fill="#080B10" height="5" width="5" x="36" y="60"></rect>
+<rect fill="#080B10" height="5" width="5" x="46" y="68"></rect>
+<rect fill="#080B10" height="5" width="5" x="60" y="62"></rect>
+<rect fill="#080B10" height="5" width="5" x="72" y="72"></rect>
+<rect fill="#080B10" height="5" width="5" x="82" y="82"></rect>
+<rect fill="#080B10" height="5" width="5" x="40" y="85"></rect>
+<rect fill="#080B10" height="5" width="5" x="55" y="82"></rect>
+</svg>
+<span class="text-[10px] text-surface-container-highest font-label-caps font-bold mt-1">NFC BEACON BROADCASTING</span>
+</div>
+<p class="text-xs text-on-surface-variant text-center px-4">Hold device near the Smart Barrier scanner at Lane 2 or drive through for ANPR license plate auto-clearance.</p>
+<!-- Live Ingress Status Indicator -->
+<div class="mt-3 w-full bg-surface-container p-3 rounded-xl flex items-center justify-between border border-white/5">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px] animate-spin">sync</span>
+<div>
+<p class="font-label-md text-xs font-bold text-white">Approaching Gate 2</p>
+<p class="text-[10px] text-secondary">Sensor range: 25 meters</p>
+</div>
+</div>
+<button class="px-3 py-1 rounded-full bg-primary-container text-on-primary-fixed text-xs font-bold" type="button">Open Gate Now</button>
+</div>
+</div>
+<!-- Secondary Actions -->
+<div class="grid grid-cols-2 gap-2">
+<button class="h-12 rounded-xl bg-surface-container-high text-white font-label-md text-xs font-bold flex items-center justify-center gap-1.5 border border-white/5" type="button">
+<span class="material-symbols-outlined text-primary-container text-[18px]">navigation</span>
+Turn-by-Turn Nav
+</button>
+<button class="h-12 rounded-xl bg-surface-container-high text-white font-label-md text-xs font-bold flex items-center justify-center gap-1.5 border border-white/5" onclick="switchStep(6)" type="button">
+<span class="material-symbols-outlined text-secondary text-[18px]">receipt_long</span>
+View All Bookings
+</button>
+</div>
+</div>
+</section>
+<!-- STEP 6: MY BOOKINGS -->
+<section class="step-pane px-margin py-space-sm" id="pane-6">
+<div class="flex flex-col gap-3.5">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-primary-container uppercase font-bold tracking-wider">Driver Activity</span>
+<h2 class="font-headline-md text-headline-md text-white font-extrabold">My SpotIQ Bookings</h2>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-high text-xs font-semibold text-on-surface">1 Active • 2 Past</span>
+</div>
+<!-- Active Booking Primary Card -->
+<div class="rounded-xl bg-surface-container p-4 border border-secondary/40 shadow-xl relative overflow-hidden flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div>
+<span class="px-2 py-0.5 rounded bg-secondary/15 text-secondary text-[10px] font-label-caps font-extrabold border border-secondary/30">CURRENT ACTIVE RESERVATION</span>
+<h3 class="font-headline-sm text-headline-sm text-white font-bold mt-1">Palace South Gate MLCP</h3>
+<p class="text-xs text-on-surface-variant flex items-center gap-1 mt-0.5"><span class="material-symbols-outlined text-[14px] text-primary-container">local_parking</span> Slot B04 (Level 2) • 60kW EV</p>
+</div>
+<div class="text-right">
+<div class="font-display-lg text-[18px] font-extrabold text-primary-container">₹79.50</div>
+<span class="text-[10px] text-secondary font-bold">PAID (UPI)</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 py-2 border-y border-surface-container-high text-center">
+<div>
+<span class="text-[10px] font-label-caps text-outline uppercase">Entry</span>
+<p class="font-label-md text-xs font-bold text-white">04:30 PM</p>
+</div>
+<div>
+<span class="text-[10px] font-label-caps text-outline uppercase">Expires</span>
+<p class="font-label-md text-xs font-bold text-white">06:30 PM</p>
+</div>
+<div>
+<span class="text-[10px] font-label-caps text-outline uppercase">Time Left</span>
+<p class="font-label-md text-xs font-bold text-secondary">01h 48m</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 h-11 rounded-full bg-primary-container text-on-primary-fixed font-label-md text-xs font-bold flex items-center justify-center gap-1 shadow-md hover:brightness-110 transition-all" onclick="switchStep(5)" type="button">
+<span class="material-symbols-outlined text-[16px]">qr_code_2</span>
+<span>Show QR FastPass</span>
+</button>
+<button class="px-4 h-11 rounded-full bg-surface-container-highest text-on-surface font-label-md text-xs font-bold hover:bg-surface-bright transition-colors" type="button">
+Extend (+1h)
+</button>
+</div>
+</div>
+<!-- Past Bookings Section -->
+<div class="flex flex-col gap-2 pt-1">
+<label class="font-label-caps text-[11px] text-outline uppercase tracking-wider">Past Completed Stays</label>
+<!-- Past Item 1 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-white/5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+<div>
+<h4 class="font-title-md text-sm font-semibold text-white">Devaraja Market Underground</h4>
+<p class="text-[11px] text-on-surface-variant">Yesterday • Slot A12 • 1h 30m</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-xs font-bold text-white">₹30.00</p>
+<span class="text-[10px] text-outline">Invoice #8271</span>
+</div>
+</div>
+<!-- Past Item 2 -->
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-white/5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+</div>
+<div>
+<h4 class="font-title-md text-sm font-semibold text-white">Sayyaji Rao Plaza Deck</h4>
+<p class="text-[11px] text-on-surface-variant">24 Oct • Slot C02 • 3h 10m</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-xs font-bold text-white">₹120.00</p>
+<span class="text-[10px] text-outline">Invoice #7912</span>
+</div>
+</div>
+</div>
+<!-- Return to Discovery Button -->
+<div class="pt-2">
+<button class="w-full h-13 rounded-full bg-surface-container-high text-primary-container font-headline-sm text-sm font-bold flex items-center justify-center gap-2 border border-primary-container/20 hover:bg-surface-bright transition-colors" onclick="switchStep(1)" type="button">
+<span class="material-symbols-outlined text-[18px]">explore</span>
+<span>Find New Parking Spot</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Unified Bottom App Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 pb-safe bg-surface-container-lowest/90 backdrop-blur-xl border-t border-surface-container-high/60 shadow-[0_-8px_24px_rgba(0,0,0,0.6)]" data-active-classes="text-primary-container font-semibold"><div class="flex items-center justify-around h-16 px-space-xs"><button class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 transition-colors group text-primary-container font-semibold" id="nav-discover" onclick="switchStep(1)" type="button"><div class="relative flex items-center justify-center"><span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">map</span></div><span class="font-label-caps text-[11px] tracking-tight">Discover</span></button><button class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-on-surface-variant transition-colors group" id="nav-bookings" onclick="switchStep(6)" type="button"><div class="relative flex items-center justify-center"><span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">confirmation_number</span><span class="absolute -top-1 -right-2 px-1.5 py-0.2 rounded-full bg-secondary text-on-secondary font-label-caps text-[9px] font-bold leading-tight">1</span></div><span class="font-label-caps text-[11px] tracking-tight">Bookings</span></button><button class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-on-surface-variant transition-colors group" id="nav-fastpass" onclick="switchStep(5)" type="button"><div class="relative flex items-center justify-center"><span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">qr_code_scanner</span></div><span class="font-label-caps text-[11px] tracking-tight">Fast-Pass</span></button><button class="flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 text-on-surface-variant transition-colors group" id="nav-profile" onclick="switchStep(2)" type="button"><div class="relative flex items-center justify-center"><span class="material-symbols-outlined text-[22px] group-hover:scale-110 transition-transform">garage</span></div><span class="font-label-caps text-[11px] tracking-tight">Facility</span></button></div></nav>
+<script>
+  function switchStep(stepNum) {
+    // Hide all panes
+    document.querySelectorAll('.step-pane').forEach(el => el.classList.remove('active'));
+    // Show selected pane
+    const targetPane = document.getElementById('pane-' + stepNum);
+    if (targetPane) targetPane.classList.add('active');
+
+    // Update Stepper Switcher Styles
+    document.querySelectorAll('.step-btn').forEach(btn => {
+      const step = btn.getAttribute('data-step');
+      const badge = btn.querySelector('span:first-child');
+      if (step == stepNum) {
+        btn.className = "step-btn px-3 py-1.5 rounded-full font-label-caps text-[11px] font-bold flex items-center gap-1.5 transition-all bg-primary-container text-on-primary-fixed shadow-[0_0_12px_rgba(0,229,255,0.45)]";
+        if (badge) badge.className = "w-4 h-4 rounded-full bg-surface-container-lowest text-primary-container flex items-center justify-center text-[10px] font-extrabold";
+      } else {
+        btn.className = "step-btn px-3 py-1.5 rounded-full font-label-caps text-[11px] font-semibold flex items-center gap-1.5 transition-all bg-surface-container-low text-on-surface-variant hover:text-on-surface border border-white/5";
+        if (badge) badge.className = "w-4 h-4 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center text-[10px]";
+      }
+    });
+
+    // Update bottom nav active indicators
+    const navDiscover = document.getElementById('nav-discover');
+    const navBookings = document.getElementById('nav-bookings');
+    const navFastpass = document.getElementById('nav-fastpass');
+    
+    if (navDiscover && navBookings && navFastpass) {
+      navDiscover.className = "flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 transition-colors group " + (stepNum === 1 ? "text-primary-container font-semibold" : "text-on-surface-variant");
+      navBookings.className = "flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 transition-colors group " + (stepNum === 6 ? "text-primary-container font-semibold" : "text-on-surface-variant");
+      navFastpass.className = "flex-1 min-h-[48px] flex flex-col items-center justify-center gap-1 transition-colors group " + (stepNum === 5 ? "text-primary-container font-semibold" : "text-on-surface-variant");
+    }
+
+    // Scroll viewport to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Stepper buttons listener
+  document.querySelectorAll('.step-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const step = parseInt(this.getAttribute('data-step'));
+      switchStep(step);
+    });
+  });
+
+  // Micro interaction for slot selection simulation
+  function selectSlot(slotCode) {
+    const slotCard = document.getElementById('slot-b04');
+    if (slotCard) {
+      slotCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }
+</script>
+</body></html>

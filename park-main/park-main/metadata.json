@@ -1,0 +1,6 @@
+{
+  "name": "SpotIQ - Connected Driver Journey & Smart Parking",
+  "description": "High-contrast telemetry-driven smart parking and connected driver companion for Mysuru Smart City.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

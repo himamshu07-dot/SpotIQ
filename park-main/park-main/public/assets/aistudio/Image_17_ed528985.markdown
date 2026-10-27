@@ -1,0 +1,223 @@
+---
+name: Telemetry Mobility
+colors:
+  surface: '#101319'
+  surface-dim: '#101319'
+  surface-bright: '#36393f'
+  surface-container-lowest: '#0b0e13'
+  surface-container-low: '#191c21'
+  surface-container: '#1d2025'
+  surface-container-high: '#272a30'
+  surface-container-highest: '#32353b'
+  on-surface: '#e1e2ea'
+  on-surface-variant: '#bac9cc'
+  inverse-surface: '#e1e2ea'
+  inverse-on-surface: '#2d3036'
+  outline: '#849396'
+  outline-variant: '#3b494c'
+  surface-tint: '#00daf3'
+  primary: '#c3f5ff'
+  on-primary: '#00363d'
+  primary-container: '#00e5ff'
+  on-primary-container: '#00626e'
+  inverse-primary: '#006875'
+  secondary: '#aff833'
+  on-secondary: '#223600'
+  secondary-container: '#95da03'
+  on-secondary-container: '#3c5b00'
+  tertiary: '#ffe7e6'
+  on-tertiary: '#680014'
+  tertiary-container: '#ffc1c0'
+  on-tertiary-container: '#ae1b30'
+  error: '#ffb4ab'
+  on-error: '#690005'
+  error-container: '#93000a'
+  on-error-container: '#ffdad6'
+  primary-fixed: '#9cf0ff'
+  primary-fixed-dim: '#00daf3'
+  on-primary-fixed: '#001f24'
+  on-primary-fixed-variant: '#004f58'
+  secondary-fixed: '#aff833'
+  secondary-fixed-dim: '#95da03'
+  on-secondary-fixed: '#121f00'
+  on-secondary-fixed-variant: '#334f00'
+  tertiary-fixed: '#ffdad9'
+  tertiary-fixed-dim: '#ffb3b3'
+  on-tertiary-fixed: '#410009'
+  on-tertiary-fixed-variant: '#920020'
+  background: '#101319'
+  on-background: '#e1e2ea'
+  surface-variant: '#32353b'
+typography:
+  display-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 32px
+    fontWeight: '800'
+    lineHeight: 38px
+    letterSpacing: -0.03em
+  headline-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 24px
+    fontWeight: '700'
+    lineHeight: 30px
+    letterSpacing: -0.02em
+  headline-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 20px
+    fontWeight: '700'
+    lineHeight: 26px
+    letterSpacing: -0.015em
+  headline-sm:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 18px
+    fontWeight: '600'
+    lineHeight: 24px
+    letterSpacing: -0.01em
+  title-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 16px
+    fontWeight: '600'
+    lineHeight: 22px
+    letterSpacing: -0.005em
+  body-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 16px
+    fontWeight: '400'
+    lineHeight: 24px
+  body-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 14px
+    fontWeight: '400'
+    lineHeight: 20px
+  body-sm:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 12px
+    fontWeight: '400'
+    lineHeight: 16px
+  label-lg:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 14px
+    fontWeight: '600'
+    lineHeight: 18px
+    letterSpacing: 0.01em
+  label-md:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 12px
+    fontWeight: '600'
+    lineHeight: 16px
+    letterSpacing: 0.02em
+  label-caps:
+    fontFamily: Plus Jakarta Sans
+    fontSize: 10px
+    fontWeight: '700'
+    lineHeight: 14px
+    letterSpacing: 0.08em
+rounded:
+  sm: 0.5rem
+  DEFAULT: 1rem
+  md: 1.5rem
+  lg: 2rem
+  xl: 3rem
+  full: 9999px
+spacing:
+  gutter: 1rem
+  margin: 1rem
+  space-xs: 0.25rem
+  space-sm: 0.5rem
+  space-md: 0.75rem
+  space-lg: 1rem
+  space-xl: 1.5rem
+---
+
+## Brand & Style
+
+This design system defines an ultra-focused, high-contrast mobile navigation environment tailored for high-speed spatial decision making. Inspired by tier-one ride-hailing and micromobility interfaces (Uber, Rapido, Ola), the experience pairs deep atmospheric dark-mode surfaces with luminous functional telemetry indicators. 
+
+### Core Ethos
+- **Precision at Speed:** Drivers and riders interpret parking status in split seconds; color and typography are reserved strictly for high-fidelity situational awareness.
+- **Atmospheric Depth:** True deep-slate canvases anchor the viewport, pushing elevated navigation controls, route polylines, and slot availability to the tactile foreground.
+- **Haptic Tactility:** Generous touch targets, full-width bottom sheets, and pill-shaped structural interactive components accommodate single-handed, on-the-go interaction.
+
+### Visual Style
+- **Aesthetic:** High-Contrast Dark Mobility / Precision Telemetry.
+- **Surface Dynamics:** Multi-tiered slate surfaces with subtle structural borders (`rgba(255, 255, 255, 0.08)`) and high-impact functional neon accents.
+- **Motion & Hierarchy:** Heavy use of gesture-driven bottom sheets, docked primary action bars, floating search pills, and instant state-driven slot telemetry.
+
+## Colors
+
+The palette leverages a deep space-slate foundation with functional luminescence. Color is treated as vital data rather than mere ornament:
+
+- **Canvas (`#080B10`):** Base map underlay and bottommost viewport canvas.
+- **Elevated Surfaces / Bottom Sheets (`#111821`):** Primary interactive card tier, search drawers, and modal containers.
+- **Surface High (`#182230`):** Input containers, inactive slot chips, and inner structural wells.
+- **Borders & Dividers (`#1E2A3B` / `rgba(255, 255, 255, 0.08)`): Crisp structural separation without drawing ocular focus away from real-time data.
+- **Primary Accent (`#00E5FF` - Electric Cyan):** Active route markers, focused slot indicators, location pins, and top-tier call-to-actions.
+- **Secondary Accent (`#B6FF3B` - Neon Lime):** High-availability parking clusters, vacant slot badges, and positive verification states.
+- **Danger / Full (`#FF5964` - Coral Red):** Occupied stalls, closed zones, and peak congestion warnings.
+- **Warning / Reserved (`#FFB300` - Amber):** Limited allocation, reserved spots, and impending meter expirations.
+- **Typography Scale:** `#F5F7FA` for high-contrast primary text; `#9AA7B7` for secondary telemetry, distance metrics, and metadata.
+
+## Typography
+
+Typography is set exclusively in **Plus Jakarta Sans** for maximum geometric balance and digital legibility through vehicle windshields and varying mobile lighting conditions.
+
+### Rules of Usage
+- **Micro-Labels & Telemetry Tags (`label-caps`):** Rendered in uppercase with generous letter spacing (`+0.08em`). Used for spot codes (e.g., `BAY-04`), slot status labels (`AVAILABLE`), and pricing rates (`/HR`).
+- **Numerical Prominence:** Parking spot counts, walk times, and distance indicators must use bold or extra-bold weights to facilitate rapid scanning.
+- **Hierarchy Separation:** Primary headlines pair tight negative tracking with strong weights, cleanly distinguishing venue names from sub-addresses and real-time transit times.
+
+## Layout & Spacing
+
+The layout is optimized specifically around a mobile baseline of **390x844px**, scaling fluidly across wider modern smartphones.
+
+### Grid & Canvas Structure
+- **Screen Margin:** Strict `16px` (`margin`) outer horizontal safe padding on handheld viewports, pinning buttons and drawer edges with consistent touch ergonomics.
+- **Touch Targets:** All interactive triggers (chips, buttons, toggles, back navigation) enforce a strict minimum target bounding box of `48x48px`.
+- **Bottom-Anchored Thumb Zone:** All critical decision triggers—reservation buttons, slot tier pickers, and filter pills—anchor to the lower 40% of the display viewport.
+- **Sheet Heights:** Bottom sheet states reflow across three defined detents: Peek (`96px`), Half (`360px`), and Expanded (`90vh`).
+
+## Elevation & Depth
+
+Visual hierarchy uses tonal surface layering combined with low-contrast structural strokes and selective neon glows rather than muddy diffuse drop-shadows.
+
+### Layer Hierarchy
+1. **Base Map Layer (`#080B10`):** The ambient map view and background canvas.
+2. **Floating Controls & Map Pins:** Renders directly on the map with crisp `1px` outer borders (`rgba(255, 255, 255, 0.12)`) and high-contrast dark navy fills (`#111821`).
+3. **Bottom Sheets & Floating Cards (`#111821`):** Supported by a subtle top highlight border (`1px solid rgba(255, 255, 255, 0.08)`) and directional ambient shadow: `0 -12px 32px rgba(0, 0, 0, 0.45)`.
+4. **Active Selection Highlights:** When a parking spot or route node is selected, an atmospheric bloom of `0 0 16px rgba(0, 229, 255, 0.35)` is applied to the element boundary.
+5. **Inner Container Wells (`#182230`):** Depressed surfaces used for text fields, search bars, and slot telemetry grids, providing internal nesting depth without drop shadows.
+
+## Shapes
+
+The design system embraces a continuous rounded pill aesthetic (`roundedness: 3`), ensuring a friendly, ergonomic tactile experience that mirrors modern transport utilities.
+
+### Shape Application Guidelines
+- **Primary Action Buttons & Navigation Bars:** Pill-shaped (`9999px` / `rounded-full`) for high-velocity thumb action.
+- **Floating Badges, Status Chips, & Filter Pills:** Full pill profiles (`9999px` / `rounded-full`) with balanced horizontal padding.
+- **Bottom Sheets & Modals:** `24px` to `32px` corner radii on top corners, creating a continuous, organic cradle for upward gestures.
+- **Parking Slot Grid Cells:** `16px` (`rounded-2xl`) rounded rectangles, softening visual clutter when dozens of spots are visible simultaneously.
+
+## Components
+
+### Buttons
+- **Primary CTA (Reserve / Navigate):** Full pill (`rounded-full`), height `56px`. Background: `#00E5FF` with `#080B10` extra-bold text. On press: subtle scale down (`0.98`) with active cyan glow.
+- **Secondary Action (Filter / Details):** Height `48px`. Surface `#182230` with `1px solid rgba(255, 255, 255, 0.08)`. Text `#F5F7FA`.
+- **Destructive Action (Cancel Booking):** Height `48px`. Dark red tint `#2A1215` with `#FF5964` stroke and text.
+
+### Telemetry Badges & Chips
+- **Slot Availability Chip:** Pill shape, height `28px`.
+  - *Vacant:* `#1B2E1C` background, `#B6FF3B` text and status dot, `1px solid rgba(182, 255, 59, 0.25)`.
+  - *Occupied:* `#281418` background, `#FF5964` text, `1px solid rgba(255, 89, 100, 0.25)`.
+  - *Reserved:* `#2D2311` background, `#FFB300` text, `1px solid rgba(255, 179, 0, 0.25)`.
+- **Floating Map Filter Chip:** Horizontal scrollable pills with `#111821` background, `rgba(255, 255, 255, 0.08)` border, and `#F5F7FA` typography.
+
+### Input Fields
+- **Search Bar:** Pill-shaped, height `52px`. Surface `#182230` with inner left icon (`#00E5FF`), placeholder text in `#9AA7B7`. Active focus adds a `1px` perimeter ring of `#00E5FF`.
+
+### Cards & Bottom Sheets
+- **Parking Lot Summary Card:** Elevated `#111821` surface with `#182230` divider borders. Displays venue headline, walking distance indicator pill (`4 min walk`), and occupancy progress bar.
+- **Spot Matrix Card:** Mini visualization of real-time parking stalls. Inactive slots appear in `#182230` with `#9AA7B7` labels; the selected stall glows in `#00E5FF` with inverse dark numbering.
+
+### Floating Map Elements
+- **Location & Recenter Button:** `48x48px` circular floating button (`#111821`), subtle perimeter ring, with center crosshair colored `#00E5FF`.
+- **Drag Handle (Bottom Sheet):** `40x4px` horizontal pill centered at the top of drawers, styled in `rgba(255, 255, 255, 0.2)`.
